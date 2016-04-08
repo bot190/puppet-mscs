@@ -1,0 +1,127 @@
+#Required Software
+# ---------------------------------------------------------------------------
+
+JAVA=$(which java)
+PERL=$(which perl)
+PYTHON=$(which python)
+WGET=$(which wget)
+RDIFF_BACKUP=$(which rdiff-backup)
+SOCAT=$(which socat)
+
+
+# Server Location
+# ---------------------------------------------------------------------------
+
+# The default location of server software and data.
+LOCATION="<%= @mscs_location %>"
+
+# The location to store files for each world server.
+WORLDS_LOCATION="<%= @world_location %>"
+
+# The location old disabled worlds were stored in previous versions
+OLD_DISABLED_WORLDS_LOCATION="<%= @mscs_disabled_world_location %>"
+
+
+# Minecraft Server Settings
+# ---------------------------------------------------------------------------
+
+# Default settings if not provided in the world's mscs.properties file.
+DEFAULT_WORLD='<%= @mscs_default_world %>'
+DEFAULT_PORT='<%= @mscs_default_port %>'
+DEFAULT_IP='<%= @mscs_default_ip %>'
+DEFAULT_VERSION_TYPE='<%= @mscs_default_version_type %>'
+DEFAULT_CLIENT_VERSION='<%= @mscs_default_client_version %>'
+DEFAULT_CLIENT_JAR='<%= @mscs_default_client_jar %>'
+DEFAULT_CLIENT_URL='<%= @mscs_default_client_url %>'
+DEFAULT_CLIENT_LOCATION=<%= @mscs_default_client_location %>
+DEFAULT_SERVER_VERSION='<%= @mscs_default_server_version %>'
+DEFAULT_SERVER_JAR='<%= @mscs_default_server_jar %>'
+DEFAULT_SERVER_URL='<%= @mscs_default_server_url %>'
+DEFAULT_SERVER_ARGS='<%= @mscs_default_server_args %>'
+DEFAULT_INITIAL_MEMORY='<%= @mscs_default_initial_memory %>'
+DEFAULT_MAXIMUM_MEMORY='<%= @mscs_default_maximum_memory %>'
+DEFAULT_SERVER_LOCATION=<%= @mscs_default_server_location %>
+DEFAULT_SERVER_COMMAND='<%= @mscs_default_server_command %>'
+
+# The following variables may be used in some of the values of the above
+# keys:
+#   $JAVA                - The Java virtual machine.
+#   $CURRENT_VERSION     - The current Mojang Minecraft release version.
+#   $CLIENT_VERSION      - The version of the client software.
+#   $SERVER_VERSION      - The version of the server software.
+#   $SERVER_JAR          - The .jar file to run for the server.
+#   $SERVER_ARGS         - The arguments to the server.
+#   $INITIAL_MEMORY      - The initial amount of memory for the server.
+#   $MAXIMUM_MEMORY      - The maximum amount of memory for the server.
+#   $SERVER_LOCATION     - The location of the server .jar file.
+
+
+# Minecraft Versions
+# ---------------------------------------------------------------------------
+
+# The URL to download a fresh copy of the Minecraft versions.json file.
+MINECRAFT_VERSIONS_URL="<%= @mscs_minecraft_versions_url %>"
+
+# The location to store the versions.json file.
+VERSIONS_JSON="<%= @mscs_versions_json %>"
+
+# The duration (in minutes) to keep the versions.json file before updating.
+VERSIONS_DURATION=<%= @mscs_versions_duration %>
+
+
+# Backup Configuration
+# ---------------------------------------------------------------------------
+
+# Location to store backups.
+BACKUP_LOCATION="<%= @mscs_backup_location %>"
+
+# Location of the backup log file.
+BACKUP_LOG="<%= @mscs_backup_log %>"
+
+# Length in days that backups survive.
+BACKUP_DURATION=<%= @mscs_backup_duration %>
+
+
+# Server Log Configuration
+# ---------------------------------------------------------------------------
+
+# Length in days that logs survive.
+LOG_DURATION=<%= @mscs_log_duration %>
+
+
+# Listing options
+# ---------------------------------------------------------------------------
+
+# Server properties for detailed listing (list).
+DETAILED_LISTING_PROPERTIES="<%= @mscs_detailed_listing_props %>"
+
+
+# Mirror Image Options
+# ---------------------------------------------------------------------------
+
+# Create a mirror image of the world data on system startup, and
+# update that mirror image on system shutdown.
+#
+# IMPORTANT: If using this option, the admin should schedule
+# periodic synchronizations of the mirror image using cron
+# to avoid data loss. To do this, add a cron task to call
+# the "sync" option on a VERY regular basis (e.g.,
+# every 5-10 minutes).
+#
+# 0 - Do not use a mirror image, default.
+# 1 - Use a mirror image.
+ENABLE_MIRROR=<%= @mscs_enable_mirror %>
+
+# The location to store the mirror image.
+#
+# NOTE: This is usually a ramdisk, e.g. /dev/shm on Debian/Ubuntu.
+MIRROR_PATH="<%= @mscs_mirror_path %>"
+
+
+# Minecraft Overviewer Mapping Software Options
+# ---------------------------------------------------------------------------
+
+OVERVIEWER_BIN=<%= @mscs_overviewer_bin %>
+OVERVIEWER_URL="<%= @mscs_overviewer_url %>"
+MAPS_URL="<%= @mscs_maps_url %>"
+MAPS_LOCATION="<%= @mscs_maps_location %>"

@@ -1,0 +1,15 @@
+{
+  "name": "bot190-mscs",
+  "version": "0.1.0",
+  "author": "bot190",
+  "summary": "Module to install MSCS and manage minecraft servers",
+  "license": "Apache-2.0",
+  "source": "https://github.com/bot190/puppet-mscs",
+  "project_page": "https://github.com/bot190/puppet-mscs",
+  "issues_url": "https://github.com/bot190/puppet-mscs/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+
