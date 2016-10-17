@@ -1,4 +1,19 @@
-# Define Augeas provider for server.properties
+# Provider: mscsproperties
+# ===========================
+#
+# Define Augeas Provider for editing server.properties
+#
+# Authors
+# -------
+#
+# Ben Beauregard <bot190@gmail.com>
+#
+# Copyright
+# ---------
+#
+# Copyright 2016 Ben Beauregard
+#
+
 define mscs::mcproperties ( $value, $world_title, $world_location ) {
     include mscs
 

@@ -9,49 +9,50 @@
     * [Beginning with mscs](#beginning-with-mscs)
 1. [Usage - Configuration options and additional functionality](#usage)
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-1. [Limitations - OS compatibility, etc.](#limitations)
-1. [Development - Guide for contributing to the module](#development)
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what
-problem it solves. This is your 30-second elevator pitch for your module.
-Consider including OS/Puppet version it works with.
+This module installs and manages the Minecraft server using the Minecraft Server Control Script.
+The module is currently being used on a Debian Jessie (8.x) installation, but should work 
+fairly universally.
 
-You can give more descriptive information in a second paragraph. This paragraph
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?" If your module has a range of functionality (installation, configuration,
-management, etc.), this is the time to mention it.
+The module will download the MSCS script from Github, and install it. It can be 
+used to configure global settings for the script. Additionally, control of 
+individual Minecraft servers is available through the World type. 
+
+More information on MSCS can be found on Github at: 
+https://github.com/MinecraftServerControl/mscs
 
 ## Setup
 
-### What mscs affects **OPTIONAL**
+### Setup Requirements
 
-If it's obvious what your module touches, you can skip this section. For
-example, folks can probably figure out that your mysql_instance module affects
-their MySQL instances.
+This module depends upon:
+* VscRepo
+* Augeas
 
-If there's more that they should know about, though, this is the place to mention:
-
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section
-here.
+This module does NOT attempt to satisfy all of the requirements of MSCS.
+You will need to ensure that any software required is available on your system.
+Currently that list includes (Note that this is not maintained):
+* Java JRE     - The Minecraft server software requires this.
+* Perl         - Most, if not all, Unix and Linux like systems have this
+                 preinstalled.
+* libjson-perl - Allows the script to read JSON formatted data.
+* Python       - Required by the Minecraft Overviewer mapping software.
+* GNU Make     - Allows you to use the Makefile to simplify installation.
+* GNU Wget     - Allows the script to download software updates via the
+                 internet.
+* rdiff-backup - Allows the script to efficiently run backups.
+* Socat        - Allows the script to communicate with the Minecraft server.
+* Iptables     - Although not explicitly required, a good firewall should be
+                 installed.
 
 ### Beginning with mscs
 
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most
-basic use of the module.
+This module can used with the default options by simply including it:
+<pre>
+include mscs
+</pre>
 
 ## Usage
 
@@ -61,23 +62,32 @@ examples and code samples for doing things with your module.
 
 ## Reference
 
-Here, include a complete list of your module's classes, types, providers,
-facts, along with the parameters for each. Users refer to this section (thus
-the name "Reference") to find specific details; most users don't read it per
-se.
+### Class mscs
 
-## Limitations
+ * `mscs_user`
+  User to run MSCS, and the Minecraft servers as
+ * `mscs_group`
+  Group to run MSCS, and the Minecraft servers as
+ * `service_ensure`
+  Whether or not the MSCS service should be installed
+ * `service_manage`
+  Whether or not the service is controlled by Puppet
+ * `service_enable`
+  Whether or not the service should be enabled
+ * `service_name`
+  The name of the service
+ * `manage_dirs`
+  Whether or not this module should create the server directories.
+ * `mscs_revision`
+  A valid github commit identifier to specify which version of the script should be used.
+ * `mscs_install_location`
+  Where the MSCS scripts will be downloaded to
+  * Default: '/opt/minecraft/mscs/
+ * `mscs_location`
+  Location of Minecraft server files
+ * `mscs_world_location`
+  Location of Minecraft worlds
 
-This is where you list OS compatibility, version compatibility, etc. If there
-are Known Issues, you might want to include them under their own heading here.
+### type: mscs::world
+Used to define a standalone Minecraft server.
 
-## Development
-
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You can also add any additional sections you feel
-are necessary or important to include here. Please use the `## ` header.

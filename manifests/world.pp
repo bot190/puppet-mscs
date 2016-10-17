@@ -1,4 +1,19 @@
-# Define for MSCS world type
+# Type: world
+# ===========================
+#
+# Type definition for a Minecraft World (Server) that handles configuration
+#
+# Authors
+# -------
+#
+# Ben Beauregard <bot190@gmail.com>
+#
+# Copyright
+# ---------
+#
+# Copyright 2016 Ben Beauregard
+#
+
 define mscs::world (
     $mc_properties      = undef,
     $mscs_properties    = undef,

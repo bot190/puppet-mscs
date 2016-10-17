@@ -1,4 +1,18 @@
-# default parameters
+# Class: params
+# ===========================
+#
+# Class that contains the defaults for parameters in MSCS
+#
+# Authors
+# -------
+#
+# Ben Beauregard <bot190@gmail.com>
+#
+# Copyright
+# ---------
+#
+# Copyright 2016 Ben Beauregard
+#
 
 class mscs::params {
     $mscs_user                        = 'minecraft'

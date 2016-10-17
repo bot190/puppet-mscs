@@ -1,16 +1,34 @@
 # Class: mscs
 # ===========================
 #
-# Full description of class mscs here.
+# This class installs and configures the Minecraft Server Control Script. 
 #
 # Parameters
 # ----------
 #
-# Document parameters here.
-#
-# * `sample parameter`
-# Explanation of what this parameter affects and what it defaults to.
-# e.g. "Specify one or more upstream ntp servers as an array."
+# * `mscs_user`
+#  User to run MSCS, and the Minecraft servers as
+# * `mscs_group`
+#  Group to run MSCS, and the Minecraft servers as
+# * `service_ensure`
+#  Whether or not the MSCS service should be installed
+# * `service_manage`
+#  Whether or not the service is controlled by Puppet
+# * `service_enable`
+#  Whether or not the service should be enabled
+# * `service_name`
+#  The name of the service
+# * `manage_dirs`
+#  Whether or not this module should create the server directories.
+# * `mscs_revision`
+#  A valid github commit identifier to specify which version of the script should be used.
+# * `mscs_install_location`
+#  Where the MSCS scripts will be downloaded to
+#  * Default: '/opt/minecraft/mscs/
+# * `mscs_location`
+#  Location of Minecraft server files
+# * `mscs_world_location`
+#  Location of Minecraft worlds
 #
 # Variables
 # ----------
@@ -29,18 +47,17 @@
 #
 # @example
 #    class { 'mscs':
-#      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
 #    }
 #
 # Authors
 # -------
 #
-# Author Name <author@domain.com>
+# Ben Beauregard <bot190@gmail.com>
 #
 # Copyright
 # ---------
 #
-# Copyright 2016 Your name here, unless otherwise noted.
+# Copyright 2016 Ben Beauregard
 #
 class mscs (
     $mscs_user                      = $mscs::params::mscs_user,
